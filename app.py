@@ -1,12 +1,9 @@
 from flask import *
 app = Flask(__name__)
-import requests, random
+import requests
 import json
 
-sno = random.randint(0,9)
-print(sno)
-
-url = f"https://ai-quote3.p.rapidapi.com/ai-quotes/{sno}"
+url = "https://ai-quote3.p.rapidapi.com/ai-quotes/"
 
 headers = {
 	"X-RapidAPI-Key": "13a3fdc433mshc472900b88d594cp11dce7jsnadce2b996b30",
@@ -15,12 +12,14 @@ headers = {
 
 response = requests.request("GET", url, headers=headers)
 
+# print(response.text)
+
 a = response.text
 b = json.loads(a)
 
-print(type(b))
-print(response.text)
-print(b)
+# print(type(b))
+# print(response.text)
+# print(b)
 
 @app.route('/')
 def index():
