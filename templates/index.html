@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Rapid-Api</title>
 </head>
+
 <body>
-    <h3 id="quote"></h3>
-    <small id="author"></small>
+    <div class="container p-5">
+        <h2>Rapid-Api app</h2>
+        <div class="card mt-3">
+            <div class="card-header">
+                Quote
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <p id="quote"></p>
+                    <footer class="blockquote-footer" id="author"></footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+        
 
     <script>
         const options = {
-                method: 'GET',
-                headers: {
-                    'X-RapidAPI-Key': '13a3fdc433mshc472900b88d594cp11dce7jsnadce2b996b30',
-                    'X-RapidAPI-Host': 'ai-quote3.p.rapidapi.com'
-                }
-            };
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '13a3fdc433mshc472900b88d594cp11dce7jsnadce2b996b30',
+                'X-RapidAPI-Host': 'ai-quote3.p.rapidapi.com'
+            }
+        };
 
-            fetch('https://ai-quote3.p.rapidapi.com/ai-quotes', options)
-                .then(response => response.json())
-                // .then(response => console.log(response))
-                .then(response => {
-                    document.getElementById('quote').innerHTML = response.quote;
-                    document.getElementById('author').innerHTML = response.author;
-                })
-                .catch(err => console.error(err));
+        fetch('https://ai-quote3.p.rapidapi.com/ai-quotes', options)
+            .then(response => response.json())
+            // .then(response => console.log(response))
+            .then(response => {
+                document.getElementById('quote').innerHTML = response.quote;
+                document.getElementById('author').innerHTML = response.author;
+            })
+            .catch(err => console.error(err));
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
 </body>
+</body>
+
 </html>
