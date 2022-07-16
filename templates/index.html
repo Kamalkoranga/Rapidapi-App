@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Api - use case</title>
+    <title>Rapid-Api</title>
 </head>
 <body>
-    <h1>Hello Quotes</h1>
-    <h3>{{ data['author'] }}</h3>
-    <p>{{ data['quote'] }}</p>
+    <h3 id="quote"></h3>
+    <small id="author"></small>
+
+    <script>
+        const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '13a3fdc433mshc472900b88d594cp11dce7jsnadce2b996b30',
+                    'X-RapidAPI-Host': 'ai-quote3.p.rapidapi.com'
+                }
+            };
+
+            fetch('https://ai-quote3.p.rapidapi.com/ai-quotes', options)
+                .then(response => response.json())
+                // .then(response => console.log(response))
+                .then(response => {
+                    document.getElementById('quote').innerHTML = response.quote;
+                    document.getElementById('author').innerHTML = response.author;
+                })
+                .catch(err => console.error(err));
+    </script>
 </body>
 </html>
